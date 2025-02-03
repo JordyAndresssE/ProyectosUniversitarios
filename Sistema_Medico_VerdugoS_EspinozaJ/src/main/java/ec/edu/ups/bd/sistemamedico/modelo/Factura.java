@@ -1,13 +1,48 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package ec.edu.ups.bd.sistemamedico.modelo;
 
-/**
- *
- * @author sebas
- */
+import java.util.Date;
+import java.util.List;
+
 public class Factura {
-    
+    private int id;
+    private int numero;
+    private Date fechaEmision;
+    private double subtotal;
+    private double iva;
+    private double total;
+    private Persona paciente;
+    private Usuario usuario;
+    private List<DetFactura> detalles;
+
+    public Factura(int id, int numero, Date fechaEmision, double subtotal, double iva, double total, Persona paciente, Usuario usuario, List<DetFactura> detalles) {
+        this.id = id;
+        this.numero = numero;
+        this.fechaEmision = fechaEmision;
+        this.subtotal = subtotal;
+        this.iva = iva;
+        this.total = total;
+        this.paciente = paciente;
+        this.usuario = usuario;
+        this.detalles = detalles;
+    }
+
+    public int getId() { return id; }
+    public int getNumero() { return numero; }
+    public Date getFechaEmision() { return fechaEmision; }
+    public double getSubtotal() { return subtotal; }
+    public double getIva() { return iva; }
+    public double getTotal() { return total; }
+    public Persona getPaciente() { return paciente; }
+    public Usuario getUsuario() { return usuario; }
+    public List<DetFactura> getDetalles() { return detalles; }
+
+    public void setId(int id) { this.id = id; }
+    public void setNumero(int numero) { this.numero = numero; }
+    public void setFechaEmision(Date fechaEmision) { this.fechaEmision = fechaEmision; }
+    public void setSubtotal(double subtotal) { this.subtotal = subtotal; }
+    public void setIva(double iva) { this.iva = iva; }
+    public void setTotal(double total) { this.total = total; }
+    public void setPaciente(Persona paciente) { this.paciente = paciente; }
+    public void setUsuario(Usuario usuario) { this.usuario = usuario; }
+    public void setDetalles(List<DetFactura> detalles) { this.detalles = detalles; }
 }

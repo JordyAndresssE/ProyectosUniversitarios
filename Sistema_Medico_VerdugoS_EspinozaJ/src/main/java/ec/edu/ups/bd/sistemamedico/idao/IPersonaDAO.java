@@ -4,10 +4,13 @@
  */
 package ec.edu.ups.bd.sistemamedico.idao;
 
-/**
- *
- * @author sebas
- */
-public class IPersonaDAO {
-    
+import ec.edu.ups.bd.sistemamedico.modelo.Persona;
+import java.util.List;
+
+public interface IPersonaDAO {
+    void agregarPersona(Persona persona);
+    Persona buscarPersona(int id);
+    List<Persona> listarPersonas();
+    void actualizarPersona(Persona persona);
+    void eliminarPersona(int id);
 }

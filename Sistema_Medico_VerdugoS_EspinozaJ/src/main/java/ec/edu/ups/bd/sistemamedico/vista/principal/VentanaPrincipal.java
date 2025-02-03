@@ -26,21 +26,678 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenu1 = new javax.swing.JMenu();
+        jDesktopPane1 = new javax.swing.JDesktopPane();
+        jMenuBar2 = new javax.swing.JMenuBar();
+        loginMenu = new javax.swing.JMenu();
+        usuarioMenu = new javax.swing.JMenu();
+        crearUsuarioItem = new javax.swing.JMenuItem();
+        buscarUsuarioItem = new javax.swing.JMenuItem();
+        actualizarUsuarioItem = new javax.swing.JMenuItem();
+        listarUsuarioItem = new javax.swing.JMenuItem();
+        eliminarUsuarioItem = new javax.swing.JMenuItem();
+        personaMenu = new javax.swing.JMenu();
+        crearPersonaItem = new javax.swing.JMenuItem();
+        buscarPersonaItem = new javax.swing.JMenuItem();
+        actualizarPersonaItem = new javax.swing.JMenuItem();
+        listarPersonaItem = new javax.swing.JMenuItem();
+        eliminarPersonaItem = new javax.swing.JMenuItem();
+        citaMenu = new javax.swing.JMenu();
+        crearCitaItem = new javax.swing.JMenuItem();
+        buscarCitaItem = new javax.swing.JMenuItem();
+        actualizarCitaItem = new javax.swing.JMenuItem();
+        listarCitaItem = new javax.swing.JMenuItem();
+        eliminarCitaItem = new javax.swing.JMenuItem();
+        servicioMenu = new javax.swing.JMenu();
+        crearServicioItem = new javax.swing.JMenuItem();
+        buscarServicioItem = new javax.swing.JMenuItem();
+        actualizarServicioItem = new javax.swing.JMenuItem();
+        listarServicioItem = new javax.swing.JMenuItem();
+        eliminarServicioItem = new javax.swing.JMenuItem();
+        facturaMenu = new javax.swing.JMenu();
+        crearFacturaItem = new javax.swing.JMenuItem();
+        buscarFacturaItem = new javax.swing.JMenuItem();
+        actualizarFacturaItem = new javax.swing.JMenuItem();
+        listarFacturaItem = new javax.swing.JMenuItem();
+        eliminarFacturaItem = new javax.swing.JMenuItem();
+        detFacturaMenu = new javax.swing.JMenu();
+        crearDetFacturaItem = new javax.swing.JMenuItem();
+        buscarDetFacturaItem = new javax.swing.JMenuItem();
+        actualizarDetFacturaItem = new javax.swing.JMenuItem();
+        listarDetFacturaItem = new javax.swing.JMenuItem();
+        eliminarDetFacturaItem = new javax.swing.JMenuItem();
+        lenguajeMenu = new javax.swing.JMenu();
+        menuItemIdiomaFrances = new javax.swing.JMenuItem();
+        menuItemIdiomaIngles = new javax.swing.JMenuItem();
+        menuItemIdiomaEspanol = new javax.swing.JMenuItem();
+
+        jMenu1.setText("jMenu1");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
+        jDesktopPane1.setLayout(jDesktopPane1Layout);
+        jDesktopPane1Layout.setHorizontalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 525, Short.MAX_VALUE)
+        );
+        jDesktopPane1Layout.setVerticalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 293, Short.MAX_VALUE)
+        );
+
+        loginMenu.setMnemonic('f');
+        loginMenu.setText("Login");
+        loginMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginMenuActionPerformed(evt);
+            }
+        });
+        jMenuBar2.add(loginMenu);
+
+        usuarioMenu.setMnemonic('f');
+        usuarioMenu.setText("Usuario");
+        usuarioMenu.setEnabled(false);
+        usuarioMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                usuarioMenuActionPerformed(evt);
+            }
+        });
+
+        crearUsuarioItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        crearUsuarioItem.setMnemonic('o');
+        crearUsuarioItem.setText("Crear");
+        crearUsuarioItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crearUsuarioItemActionPerformed(evt);
+            }
+        });
+        usuarioMenu.add(crearUsuarioItem);
+
+        buscarUsuarioItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        buscarUsuarioItem.setMnemonic('s');
+        buscarUsuarioItem.setText("Buscar");
+        buscarUsuarioItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarUsuarioItemActionPerformed(evt);
+            }
+        });
+        usuarioMenu.add(buscarUsuarioItem);
+
+        actualizarUsuarioItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        actualizarUsuarioItem.setMnemonic('a');
+        actualizarUsuarioItem.setText("Actualizar");
+        actualizarUsuarioItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actualizarUsuarioItemActionPerformed(evt);
+            }
+        });
+        usuarioMenu.add(actualizarUsuarioItem);
+
+        listarUsuarioItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        listarUsuarioItem.setText("Listar");
+        listarUsuarioItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listarUsuarioItemActionPerformed(evt);
+            }
+        });
+        usuarioMenu.add(listarUsuarioItem);
+
+        eliminarUsuarioItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        eliminarUsuarioItem.setMnemonic('x');
+        eliminarUsuarioItem.setText("Eliminar");
+        eliminarUsuarioItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarUsuarioItemActionPerformed(evt);
+            }
+        });
+        usuarioMenu.add(eliminarUsuarioItem);
+
+        jMenuBar2.add(usuarioMenu);
+
+        personaMenu.setMnemonic('f');
+        personaMenu.setText("Persona");
+        personaMenu.setEnabled(false);
+        personaMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                personaMenuActionPerformed(evt);
+            }
+        });
+
+        crearPersonaItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        crearPersonaItem.setMnemonic('o');
+        crearPersonaItem.setText("Crear");
+        crearPersonaItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crearPersonaItemActionPerformed(evt);
+            }
+        });
+        personaMenu.add(crearPersonaItem);
+
+        buscarPersonaItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        buscarPersonaItem.setMnemonic('s');
+        buscarPersonaItem.setText("Buscar");
+        buscarPersonaItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarPersonaItemActionPerformed(evt);
+            }
+        });
+        personaMenu.add(buscarPersonaItem);
+
+        actualizarPersonaItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        actualizarPersonaItem.setMnemonic('a');
+        actualizarPersonaItem.setText("Actualizar");
+        actualizarPersonaItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actualizarPersonaItemActionPerformed(evt);
+            }
+        });
+        personaMenu.add(actualizarPersonaItem);
+
+        listarPersonaItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        listarPersonaItem.setText("Listar");
+        listarPersonaItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listarPersonaItemActionPerformed(evt);
+            }
+        });
+        personaMenu.add(listarPersonaItem);
+
+        eliminarPersonaItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        eliminarPersonaItem.setMnemonic('x');
+        eliminarPersonaItem.setText("Eliminar");
+        eliminarPersonaItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarPersonaItemActionPerformed(evt);
+            }
+        });
+        personaMenu.add(eliminarPersonaItem);
+
+        jMenuBar2.add(personaMenu);
+
+        citaMenu.setMnemonic('f');
+        citaMenu.setText("Cita");
+        citaMenu.setEnabled(false);
+        citaMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                citaMenuActionPerformed(evt);
+            }
+        });
+
+        crearCitaItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        crearCitaItem.setMnemonic('o');
+        crearCitaItem.setText("Crear");
+        crearCitaItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crearCitaItemActionPerformed(evt);
+            }
+        });
+        citaMenu.add(crearCitaItem);
+
+        buscarCitaItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        buscarCitaItem.setMnemonic('s');
+        buscarCitaItem.setText("Buscar");
+        buscarCitaItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarCitaItemActionPerformed(evt);
+            }
+        });
+        citaMenu.add(buscarCitaItem);
+
+        actualizarCitaItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        actualizarCitaItem.setMnemonic('a');
+        actualizarCitaItem.setText("Actualizar");
+        actualizarCitaItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actualizarCitaItemActionPerformed(evt);
+            }
+        });
+        citaMenu.add(actualizarCitaItem);
+
+        listarCitaItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        listarCitaItem.setText("Listar");
+        listarCitaItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listarCitaItemActionPerformed(evt);
+            }
+        });
+        citaMenu.add(listarCitaItem);
+
+        eliminarCitaItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        eliminarCitaItem.setMnemonic('x');
+        eliminarCitaItem.setText("Eliminar");
+        eliminarCitaItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarCitaItemActionPerformed(evt);
+            }
+        });
+        citaMenu.add(eliminarCitaItem);
+
+        jMenuBar2.add(citaMenu);
+
+        servicioMenu.setMnemonic('f');
+        servicioMenu.setText("Servicio");
+        servicioMenu.setEnabled(false);
+        servicioMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                servicioMenuActionPerformed(evt);
+            }
+        });
+
+        crearServicioItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        crearServicioItem.setMnemonic('o');
+        crearServicioItem.setText("Crear");
+        crearServicioItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crearServicioItemActionPerformed(evt);
+            }
+        });
+        servicioMenu.add(crearServicioItem);
+
+        buscarServicioItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        buscarServicioItem.setMnemonic('s');
+        buscarServicioItem.setText("Buscar");
+        buscarServicioItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarServicioItemActionPerformed(evt);
+            }
+        });
+        servicioMenu.add(buscarServicioItem);
+
+        actualizarServicioItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        actualizarServicioItem.setMnemonic('a');
+        actualizarServicioItem.setText("Actualizar");
+        actualizarServicioItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actualizarServicioItemActionPerformed(evt);
+            }
+        });
+        servicioMenu.add(actualizarServicioItem);
+
+        listarServicioItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        listarServicioItem.setText("Listar");
+        listarServicioItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listarServicioItemActionPerformed(evt);
+            }
+        });
+        servicioMenu.add(listarServicioItem);
+
+        eliminarServicioItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        eliminarServicioItem.setMnemonic('x');
+        eliminarServicioItem.setText("Eliminar");
+        eliminarServicioItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarServicioItemActionPerformed(evt);
+            }
+        });
+        servicioMenu.add(eliminarServicioItem);
+
+        jMenuBar2.add(servicioMenu);
+
+        facturaMenu.setMnemonic('f');
+        facturaMenu.setText("Factura");
+        facturaMenu.setEnabled(false);
+        facturaMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                facturaMenuActionPerformed(evt);
+            }
+        });
+
+        crearFacturaItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        crearFacturaItem.setMnemonic('o');
+        crearFacturaItem.setText("Crear");
+        crearFacturaItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crearFacturaItemActionPerformed(evt);
+            }
+        });
+        facturaMenu.add(crearFacturaItem);
+
+        buscarFacturaItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        buscarFacturaItem.setMnemonic('s');
+        buscarFacturaItem.setText("Buscar");
+        buscarFacturaItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarFacturaItemActionPerformed(evt);
+            }
+        });
+        facturaMenu.add(buscarFacturaItem);
+
+        actualizarFacturaItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        actualizarFacturaItem.setMnemonic('a');
+        actualizarFacturaItem.setText("Actualizar");
+        actualizarFacturaItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actualizarFacturaItemActionPerformed(evt);
+            }
+        });
+        facturaMenu.add(actualizarFacturaItem);
+
+        listarFacturaItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        listarFacturaItem.setText("Listar");
+        listarFacturaItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listarFacturaItemActionPerformed(evt);
+            }
+        });
+        facturaMenu.add(listarFacturaItem);
+
+        eliminarFacturaItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        eliminarFacturaItem.setMnemonic('x');
+        eliminarFacturaItem.setText("Eliminar");
+        eliminarFacturaItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarFacturaItemActionPerformed(evt);
+            }
+        });
+        facturaMenu.add(eliminarFacturaItem);
+
+        jMenuBar2.add(facturaMenu);
+
+        detFacturaMenu.setMnemonic('f');
+        detFacturaMenu.setText("Detalle Factura");
+        detFacturaMenu.setEnabled(false);
+        detFacturaMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                detFacturaMenuActionPerformed(evt);
+            }
+        });
+
+        crearDetFacturaItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        crearDetFacturaItem.setMnemonic('o');
+        crearDetFacturaItem.setText("Crear");
+        crearDetFacturaItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crearDetFacturaItemActionPerformed(evt);
+            }
+        });
+        detFacturaMenu.add(crearDetFacturaItem);
+
+        buscarDetFacturaItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        buscarDetFacturaItem.setMnemonic('s');
+        buscarDetFacturaItem.setText("Buscar");
+        buscarDetFacturaItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarDetFacturaItemActionPerformed(evt);
+            }
+        });
+        detFacturaMenu.add(buscarDetFacturaItem);
+
+        actualizarDetFacturaItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        actualizarDetFacturaItem.setMnemonic('a');
+        actualizarDetFacturaItem.setText("Actualizar");
+        actualizarDetFacturaItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actualizarDetFacturaItemActionPerformed(evt);
+            }
+        });
+        detFacturaMenu.add(actualizarDetFacturaItem);
+
+        listarDetFacturaItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        listarDetFacturaItem.setText("Listar");
+        listarDetFacturaItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listarDetFacturaItemActionPerformed(evt);
+            }
+        });
+        detFacturaMenu.add(listarDetFacturaItem);
+
+        eliminarDetFacturaItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        eliminarDetFacturaItem.setMnemonic('x');
+        eliminarDetFacturaItem.setText("Eliminar");
+        eliminarDetFacturaItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarDetFacturaItemActionPerformed(evt);
+            }
+        });
+        detFacturaMenu.add(eliminarDetFacturaItem);
+
+        jMenuBar2.add(detFacturaMenu);
+
+        lenguajeMenu.setMnemonic('e');
+        lenguajeMenu.setText("Lenguaje");
+
+        menuItemIdiomaFrances.setMnemonic('y');
+        menuItemIdiomaFrances.setText("Francés");
+        menuItemIdiomaFrances.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemIdiomaFrancesActionPerformed(evt);
+            }
+        });
+        lenguajeMenu.add(menuItemIdiomaFrances);
+
+        menuItemIdiomaIngles.setText("Inglés");
+        menuItemIdiomaIngles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemIdiomaInglesActionPerformed(evt);
+            }
+        });
+        lenguajeMenu.add(menuItemIdiomaIngles);
+
+        menuItemIdiomaEspanol.setText("Español");
+        menuItemIdiomaEspanol.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemIdiomaEspanolActionPerformed(evt);
+            }
+        });
+        lenguajeMenu.add(menuItemIdiomaEspanol);
+
+        jMenuBar2.add(lenguajeMenu);
+
+        setJMenuBar(jMenuBar2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jDesktopPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jDesktopPane1)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void crearUsuarioItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearUsuarioItemActionPerformed
+        /*if(ventanaCrearBiblioteca == null){
+            ventanaCrearBiblioteca = new VentanaCrearBiblioteca(bibliotecaControlador);
+            ventanaCrearBiblioteca.cambiarIdioma(locale);
+        }
+        if(!ventanaCrearBiblioteca.isVisible()){
+            ventanaCrearBiblioteca.setVisible(true);
+            desktopPane.add(ventanaCrearBiblioteca);
+        }*/
+    }//GEN-LAST:event_crearUsuarioItemActionPerformed
+
+    private void buscarUsuarioItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarUsuarioItemActionPerformed
+        /*if(ventanaBuscarBiblioteca == null){
+            ventanaBuscarBiblioteca = new VentanaBuscarBiblioteca(bibliotecaControlador);
+            ventanaBuscarBiblioteca.cambiarIdioma(locale);
+        }
+        if(!ventanaBuscarBiblioteca.isVisible()){
+            ventanaBuscarBiblioteca.setVisible(true);
+            desktopPane.add(ventanaBuscarBiblioteca);
+        }*/
+    }//GEN-LAST:event_buscarUsuarioItemActionPerformed
+
+    private void actualizarUsuarioItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarUsuarioItemActionPerformed
+        /*if(ventanaActualizarBiblioteca == null){
+            ventanaActualizarBiblioteca = new VentanaActualizarBiblioteca(bibliotecaControlador);
+            ventanaActualizarBiblioteca.cambiarIdioma(locale);
+        }
+        if(!ventanaActualizarBiblioteca.isVisible()){
+            ventanaActualizarBiblioteca.setVisible(true);
+            desktopPane.add(ventanaActualizarBiblioteca);
+        }*/
+    }//GEN-LAST:event_actualizarUsuarioItemActionPerformed
+
+    private void listarUsuarioItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarUsuarioItemActionPerformed
+        /*if(ventanaListarBiblioteca == null){
+            ventanaListarBiblioteca = new VentanaListarBiblioteca(bibliotecaControlador);
+            ventanaListarBiblioteca.cambiarIdioma(locale);
+        }
+        if(!ventanaListarBiblioteca.isVisible()){
+            ventanaListarBiblioteca.setVisible(true);
+            desktopPane.add(ventanaListarBiblioteca);
+        }*/
+    }//GEN-LAST:event_listarUsuarioItemActionPerformed
+
+    private void eliminarUsuarioItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarUsuarioItemActionPerformed
+        /*if(ventanaEliminarBiblioteca == null){
+            ventanaEliminarBiblioteca = new VentanaEliminarBiblioteca(bibliotecaControlador);
+            ventanaEliminarBiblioteca.cambiarIdioma(locale);
+        }
+        if(!ventanaEliminarBiblioteca.isVisible()){
+            ventanaEliminarBiblioteca.setVisible(true);
+            desktopPane.add(ventanaEliminarBiblioteca);
+        }*/
+    }//GEN-LAST:event_eliminarUsuarioItemActionPerformed
+
+    private void usuarioMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuarioMenuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_usuarioMenuActionPerformed
+
+    private void crearPersonaItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearPersonaItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_crearPersonaItemActionPerformed
+
+    private void buscarPersonaItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarPersonaItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buscarPersonaItemActionPerformed
+
+    private void actualizarPersonaItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarPersonaItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_actualizarPersonaItemActionPerformed
+
+    private void listarPersonaItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarPersonaItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_listarPersonaItemActionPerformed
+
+    private void eliminarPersonaItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarPersonaItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_eliminarPersonaItemActionPerformed
+
+    private void personaMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_personaMenuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_personaMenuActionPerformed
+
+    private void crearCitaItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearCitaItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_crearCitaItemActionPerformed
+
+    private void buscarCitaItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarCitaItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buscarCitaItemActionPerformed
+
+    private void actualizarCitaItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarCitaItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_actualizarCitaItemActionPerformed
+
+    private void listarCitaItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarCitaItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_listarCitaItemActionPerformed
+
+    private void eliminarCitaItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarCitaItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_eliminarCitaItemActionPerformed
+
+    private void citaMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_citaMenuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_citaMenuActionPerformed
+
+    private void crearServicioItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearServicioItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_crearServicioItemActionPerformed
+
+    private void buscarServicioItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarServicioItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buscarServicioItemActionPerformed
+
+    private void actualizarServicioItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarServicioItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_actualizarServicioItemActionPerformed
+
+    private void listarServicioItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarServicioItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_listarServicioItemActionPerformed
+
+    private void eliminarServicioItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarServicioItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_eliminarServicioItemActionPerformed
+
+    private void servicioMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_servicioMenuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_servicioMenuActionPerformed
+
+    private void crearFacturaItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearFacturaItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_crearFacturaItemActionPerformed
+
+    private void buscarFacturaItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarFacturaItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buscarFacturaItemActionPerformed
+
+    private void actualizarFacturaItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarFacturaItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_actualizarFacturaItemActionPerformed
+
+    private void listarFacturaItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarFacturaItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_listarFacturaItemActionPerformed
+
+    private void eliminarFacturaItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarFacturaItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_eliminarFacturaItemActionPerformed
+
+    private void facturaMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_facturaMenuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_facturaMenuActionPerformed
+
+    private void crearDetFacturaItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearDetFacturaItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_crearDetFacturaItemActionPerformed
+
+    private void buscarDetFacturaItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarDetFacturaItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buscarDetFacturaItemActionPerformed
+
+    private void actualizarDetFacturaItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarDetFacturaItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_actualizarDetFacturaItemActionPerformed
+
+    private void listarDetFacturaItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarDetFacturaItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_listarDetFacturaItemActionPerformed
+
+    private void eliminarDetFacturaItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarDetFacturaItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_eliminarDetFacturaItemActionPerformed
+
+    private void detFacturaMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_detFacturaMenuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_detFacturaMenuActionPerformed
+
+    private void loginMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginMenuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_loginMenuActionPerformed
+
+    private void menuItemIdiomaFrancesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemIdiomaFrancesActionPerformed
+        /*locale = new Locale("fr", "FR");
+        cambiarIdioma();*/
+    }//GEN-LAST:event_menuItemIdiomaFrancesActionPerformed
+
+    private void menuItemIdiomaInglesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemIdiomaInglesActionPerformed
+        /*locale = new Locale("en", "US");
+        cambiarIdioma();*/
+    }//GEN-LAST:event_menuItemIdiomaInglesActionPerformed
+
+    private void menuItemIdiomaEspanolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemIdiomaEspanolActionPerformed
+        /*locale = new Locale("es", "EC");
+        cambiarIdioma();*/
+    }//GEN-LAST:event_menuItemIdiomaEspanolActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +735,49 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem actualizarCitaItem;
+    private javax.swing.JMenuItem actualizarDetFacturaItem;
+    private javax.swing.JMenuItem actualizarFacturaItem;
+    private javax.swing.JMenuItem actualizarPersonaItem;
+    private javax.swing.JMenuItem actualizarServicioItem;
+    private javax.swing.JMenuItem actualizarUsuarioItem;
+    private javax.swing.JMenuItem buscarCitaItem;
+    private javax.swing.JMenuItem buscarDetFacturaItem;
+    private javax.swing.JMenuItem buscarFacturaItem;
+    private javax.swing.JMenuItem buscarPersonaItem;
+    private javax.swing.JMenuItem buscarServicioItem;
+    private javax.swing.JMenuItem buscarUsuarioItem;
+    private javax.swing.JMenu citaMenu;
+    private javax.swing.JMenuItem crearCitaItem;
+    private javax.swing.JMenuItem crearDetFacturaItem;
+    private javax.swing.JMenuItem crearFacturaItem;
+    private javax.swing.JMenuItem crearPersonaItem;
+    private javax.swing.JMenuItem crearServicioItem;
+    private javax.swing.JMenuItem crearUsuarioItem;
+    private javax.swing.JMenu detFacturaMenu;
+    private javax.swing.JMenuItem eliminarCitaItem;
+    private javax.swing.JMenuItem eliminarDetFacturaItem;
+    private javax.swing.JMenuItem eliminarFacturaItem;
+    private javax.swing.JMenuItem eliminarPersonaItem;
+    private javax.swing.JMenuItem eliminarServicioItem;
+    private javax.swing.JMenuItem eliminarUsuarioItem;
+    private javax.swing.JMenu facturaMenu;
+    private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JMenu lenguajeMenu;
+    private javax.swing.JMenuItem listarCitaItem;
+    private javax.swing.JMenuItem listarDetFacturaItem;
+    private javax.swing.JMenuItem listarFacturaItem;
+    private javax.swing.JMenuItem listarPersonaItem;
+    private javax.swing.JMenuItem listarServicioItem;
+    private javax.swing.JMenuItem listarUsuarioItem;
+    private javax.swing.JMenu loginMenu;
+    private javax.swing.JMenuItem menuItemIdiomaEspanol;
+    private javax.swing.JMenuItem menuItemIdiomaFrances;
+    private javax.swing.JMenuItem menuItemIdiomaIngles;
+    private javax.swing.JMenu personaMenu;
+    private javax.swing.JMenu servicioMenu;
+    private javax.swing.JMenu usuarioMenu;
     // End of variables declaration//GEN-END:variables
 }

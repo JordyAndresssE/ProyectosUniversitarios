@@ -4,10 +4,13 @@
  */
 package ec.edu.ups.bd.sistemamedico.idao;
 
-/**
- *
- * @author sebas
- */
-public class IDetFacturaDAO {
-    
+import ec.edu.ups.bd.sistemamedico.modelo.DetFactura;
+import java.util.List;
+
+public interface IDetFacturaDAO {
+    void agregarDetalle(DetFactura detalle);
+    DetFactura buscarDetalle(int id);
+    List<DetFactura> listarDetalles();
+    void actualizarDetalle(DetFactura detalle);
+    void eliminarDetalle(int id);
 }

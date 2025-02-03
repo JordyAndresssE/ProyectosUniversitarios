@@ -5,12 +5,7 @@
 package ec.edu.ups.bd.sistemamedico.idao;
 
 import ec.edu.ups.bd.sistemamedico.modelo.Usuario;
-import java.util.List;
 
-public interface IUsuarioDAO {
-    void agregarUsuario(Usuario usuario);
-    Usuario buscarUsuario(int id);
-    List<Usuario> listarUsuarios();
-    void actualizarUsuario(Usuario usuario);
-    void eliminarUsuario(int id);
+public interface ILoginDAO {
+    Usuario autenticar(String nombre, String contrasena);
 }

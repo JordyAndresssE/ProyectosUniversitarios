@@ -4,10 +4,13 @@
  */
 package ec.edu.ups.bd.sistemamedico.idao;
 
-/**
- *
- * @author sebas
- */
-public class IServicioDAO {
-    
+import ec.edu.ups.bd.sistemamedico.modelo.Servicio;
+import java.util.List;
+
+public interface IServicioDAO {
+    void agregarServicio(Servicio servicio);
+    Servicio buscarServicio(int id);
+    List<Servicio> listarServicios();
+    void actualizarServicio(Servicio servicio);
+    void eliminarServicio(int id);
 }
