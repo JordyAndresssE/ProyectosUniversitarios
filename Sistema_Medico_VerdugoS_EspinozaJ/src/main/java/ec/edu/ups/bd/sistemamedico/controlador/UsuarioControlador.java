@@ -2,32 +2,27 @@ package ec.edu.ups.bd.sistemamedico.controlador;
 
 import ec.edu.ups.bd.sistemamedico.dao.UsuarioDAO;
 import ec.edu.ups.bd.sistemamedico.modelo.Usuario;
-import java.util.List;
+import java.util.Optional;
 
 public class UsuarioControlador {
     private UsuarioDAO usuarioDAO;
+    private Usuario usuarioAutenticado;
 
     public UsuarioControlador(UsuarioDAO usuarioDAO) {
         this.usuarioDAO = usuarioDAO;
     }
 
-    public void agregarUsuario(Usuario usuario) {
-        usuarioDAO.agregarUsuario(usuario);
+    // Método para autenticar usuario por nombre y contraseña
+    public boolean autenticarUsuario(String nombre, String contrasena) {
+        Optional<Usuario> usuario = usuarioDAO.autenticarUsuario(nombre, contrasena);
+        if (usuario.isPresent()) {
+            this.usuarioAutenticado = usuario.get();
+            return true;
+        }
+        return false;
     }
 
-    public Usuario buscarUsuario(int id) {
-        return usuarioDAO.buscarUsuario(id);
-    }
-
-    public List<Usuario> listarUsuarios() {
-        return usuarioDAO.listarUsuarios();
-    }
-
-    public void actualizarUsuario(Usuario usuario) {
-        usuarioDAO.actualizarUsuario(usuario);
-    }
-
-    public void eliminarUsuario(int id) {
-        usuarioDAO.eliminarUsuario(id);
+    public Usuario getUsuarioAutenticado() {
+        return usuarioAutenticado;
     }
 }

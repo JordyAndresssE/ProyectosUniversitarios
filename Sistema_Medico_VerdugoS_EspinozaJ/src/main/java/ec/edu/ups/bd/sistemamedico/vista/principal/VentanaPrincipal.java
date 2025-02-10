@@ -4,17 +4,32 @@
  */
 package ec.edu.ups.bd.sistemamedico.vista.principal;
 
+
+import ec.edu.ups.bd.sistemamedico.dao.ConexionBD;
+import ec.edu.ups.bd.sistemamedico.dao.UsuarioDAO;
+import ec.edu.ups.bd.sistemamedico.modelo.Usuario;
+import ec.edu.ups.bd.sistemamedico.vista.login.Login;
+import java.sql.Connection;
+import javax.swing.*;
+
 /**
  *
  * @author sebas
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
 
+    private Usuario usuarioActual;
+    private UsuarioDAO usuarioDAO;
+    private Connection conexion;
+    
     /**
      * Creates new form VentanaPrincipal
      */
     public VentanaPrincipal() {
+        this.conexion = ConexionBD.getConexion();
+        this.usuarioDAO = new UsuarioDAO(conexion);
         initComponents();
+        deshabilitarMenus();
     }
 
     /**
@@ -30,6 +45,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jMenuBar2 = new javax.swing.JMenuBar();
         loginMenu = new javax.swing.JMenu();
+        LoginMenuItem = new javax.swing.JMenuItem();
         usuarioMenu = new javax.swing.JMenu();
         crearUsuarioItem = new javax.swing.JMenuItem();
         buscarUsuarioItem = new javax.swing.JMenuItem();
@@ -93,6 +109,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 loginMenuActionPerformed(evt);
             }
         });
+
+        LoginMenuItem.setText("Iniciar Sesion");
+        LoginMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LoginMenuItemActionPerformed(evt);
+            }
+        });
+        loginMenu.add(LoginMenuItem);
+
         jMenuBar2.add(loginMenu);
 
         usuarioMenu.setMnemonic('f');
@@ -500,7 +525,47 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+   
+    // Deshabilitar todos los menús excepto "Login"
+    private void deshabilitarMenus() {
+        usuarioMenu.setEnabled(false);
+        personaMenu.setEnabled(false);
+        citaMenu.setEnabled(false);
+        servicioMenu.setEnabled(false);
+        facturaMenu.setEnabled(false);
+        detFacturaMenu.setEnabled(false);
+    }
+    
+    // Habilitar opciones según el rol
+   // Habilitar opciones según el rol
+    private void habilitarMenus() {
+        if (usuarioActual == null) {
+            deshabilitarMenus();
+            return;
+        }
 
+        personaMenu.setEnabled(true);
+        facturaMenu.setEnabled(true);
+
+        if (usuarioActual.getRol().equals("Administrador")) {
+            usuarioMenu.setEnabled(true);
+            citaMenu.setEnabled(true);
+            servicioMenu.setEnabled(true);
+        } else { // Empleado General
+            usuarioMenu.setEnabled(false);
+            citaMenu.setEnabled(false);
+            servicioMenu.setEnabled(false);
+        }
+    }
+    
+    // Método para recibir el usuario autenticado desde Login.java
+    public void iniciarSesion(Usuario usuario) {
+        this.usuarioActual = usuario;
+        habilitarMenus();
+        JOptionPane.showMessageDialog(this, "Bienvenido, " + usuario.getNombre() + " (" + usuario.getRol() + ")");
+    }
+    
+    
     private void crearUsuarioItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearUsuarioItemActionPerformed
         /*if(ventanaCrearBiblioteca == null){
             ventanaCrearBiblioteca = new VentanaCrearBiblioteca(bibliotecaControlador);
@@ -681,7 +746,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_detFacturaMenuActionPerformed
 
     private void loginMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginMenuActionPerformed
-        // TODO add your handling code here:
+    
     }//GEN-LAST:event_loginMenuActionPerformed
 
     private void menuItemIdiomaFrancesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemIdiomaFrancesActionPerformed
@@ -698,6 +763,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         /*locale = new Locale("es", "EC");
         cambiarIdioma();*/
     }//GEN-LAST:event_menuItemIdiomaEspanolActionPerformed
+
+    private void LoginMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginMenuItemActionPerformed
+        Login login = new Login(this, usuarioDAO); // Ahora pasamos usuarioDAO
+        jDesktopPane1.add(login);
+        login.setVisible(true);
+        login.toFront();
+    }//GEN-LAST:event_LoginMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -735,6 +807,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem LoginMenuItem;
     private javax.swing.JMenuItem actualizarCitaItem;
     private javax.swing.JMenuItem actualizarDetFacturaItem;
     private javax.swing.JMenuItem actualizarFacturaItem;
