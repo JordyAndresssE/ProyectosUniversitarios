@@ -8,9 +8,10 @@ public class ConexionBD {
     
     // URL de conexión a Oracle
     private static final String URL = "jdbc:oracle:thin:@localhost:1521:xe"; // Cambia según tu configuración
-    private static final String USUARIO = "SIS_MEDICO"; // Usuario de la BD
-    private static final String CONTRASENA = "root"; // Contraseña de la BD
+    private static final String USUARIO = "SISMEDICO"; // Usuario de la BD
+    private static final String CONTRASENA = "sismedico123"; // Contraseña de la BD
 
+    
     // Método para obtener la conexión
     public static Connection getConexion() { // Cambio de nombre para coincidir con la llamada en Login.java
         Connection conexion = null;
