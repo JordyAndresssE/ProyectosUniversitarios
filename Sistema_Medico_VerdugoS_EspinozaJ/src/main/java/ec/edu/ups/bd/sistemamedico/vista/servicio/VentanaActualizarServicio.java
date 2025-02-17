@@ -4,15 +4,18 @@
  */
 package ec.edu.ups.bd.sistemamedico.vista.servicio;
 
-import ec.edu.ups.bd.sistemamedico.vista.cita.*;
-import ec.edu.ups.bd.sistemamedico.vista.persona.*;
+import ec.edu.ups.bd.sistemamedico.controlador.ServicioControlador;
+import ec.edu.ups.bd.sistemamedico.modelo.Servicio;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author sebas
  */
 public class VentanaActualizarServicio extends javax.swing.JInternalFrame {
-
+    
+    private ServicioControlador servicioControlador;
+    
     /**
      * Creates new form VentanaActualizarPersona
      */
@@ -29,21 +32,399 @@ public class VentanaActualizarServicio extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        combo_IVA = new javax.swing.JComboBox<>();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        combo_Estado = new javax.swing.JComboBox<>();
+        jLabel8 = new javax.swing.JLabel();
+        btn_Crear = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        txt_Id = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        txt_Codigo = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        txt_Nombre = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        txt_Precio = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        btn_Buscar = new javax.swing.JButton();
+        combo_IVA1 = new javax.swing.JComboBox<>();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        combo_Estado1 = new javax.swing.JComboBox<>();
+        jLabel12 = new javax.swing.JLabel();
+        btn_Actualizar = new javax.swing.JButton();
+        jLabel13 = new javax.swing.JLabel();
+        txt_Id1 = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        txt_Codigo1 = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        txt_Nombre1 = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        txt_Precio1 = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+
+        combo_IVA.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "S", "N" }));
+        combo_IVA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                combo_IVAActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setFont(new java.awt.Font("Sylfaen", 0, 12)); // NOI18N
+        jLabel6.setText("(S para Si, N para No)");
+
+        jLabel7.setText("Estado:");
+
+        combo_Estado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A", "I" }));
+        combo_Estado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                combo_EstadoActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setFont(new java.awt.Font("Sylfaen", 0, 12)); // NOI18N
+        jLabel8.setText("A para Activo, I para Inactivo");
+
+        btn_Crear.setText("Crear");
+        btn_Crear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_CrearActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("ID:");
+
+        txt_Id.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_IdActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("Codigo:");
+
+        txt_Codigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_CodigoActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("Nombre:");
+
+        txt_Nombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_NombreActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("Precio:");
+
+        txt_Precio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_PrecioActionPerformed(evt);
+            }
+        });
+
+        jLabel9.setText("Aplica IVA ?");
+
+        btn_Buscar.setText("Buscar");
+
+        combo_IVA1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "S", "N" }));
+        combo_IVA1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                combo_IVA1ActionPerformed(evt);
+            }
+        });
+
+        jLabel10.setFont(new java.awt.Font("Sylfaen", 0, 12)); // NOI18N
+        jLabel10.setText("(S para Si, N para No)");
+
+        jLabel11.setText("Estado:");
+
+        combo_Estado1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A", "I" }));
+        combo_Estado1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                combo_Estado1ActionPerformed(evt);
+            }
+        });
+
+        jLabel12.setFont(new java.awt.Font("Sylfaen", 0, 12)); // NOI18N
+        jLabel12.setText("A para Activo, I para Inactivo");
+
+        btn_Actualizar.setText("Actualizar");
+        btn_Actualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ActualizarActionPerformed(evt);
+            }
+        });
+
+        jLabel13.setText("ID:");
+
+        txt_Id1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_Id1ActionPerformed(evt);
+            }
+        });
+
+        jLabel14.setText("Codigo:");
+
+        txt_Codigo1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_Codigo1ActionPerformed(evt);
+            }
+        });
+
+        jLabel15.setText("Nombre:");
+
+        txt_Nombre1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_Nombre1ActionPerformed(evt);
+            }
+        });
+
+        jLabel16.setText("Precio:");
+
+        txt_Precio1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_Precio1ActionPerformed(evt);
+            }
+        });
+
+        jLabel17.setText("Aplica IVA ?");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(66, 66, 66)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(175, 175, 175)
+                        .addComponent(btn_Actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel11)
+                            .addComponent(jLabel17)
+                            .addComponent(jLabel16)
+                            .addComponent(jLabel15)
+                            .addComponent(jLabel14)
+                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txt_Id1)
+                                .addComponent(txt_Codigo1)
+                                .addComponent(txt_Nombre1)
+                                .addComponent(txt_Precio1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(21, 21, 21)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(combo_Estado1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(combo_IVA1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(40, 40, 40)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel12)
+                                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(btn_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(127, 127, 127)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_Id1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14)
+                    .addComponent(txt_Codigo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel15)
+                    .addComponent(txt_Nombre1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel16)
+                    .addComponent(txt_Precio1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel17)
+                    .addComponent(combo_IVA1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel11)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel12)
+                        .addComponent(combo_Estado1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(50, 50, 50)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_Buscar)
+                    .addComponent(btn_Actualizar))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void combo_IVAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_IVAActionPerformed
+        combo_Estado.requestFocus();
+    }//GEN-LAST:event_combo_IVAActionPerformed
+
+    private void combo_EstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_EstadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_combo_EstadoActionPerformed
+
+    private void btn_CrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CrearActionPerformed
+        try {
+            // Leer y parsear los datos de los campos
+            int id = Integer.parseInt(txt_Id.getText().trim());
+            int codigo = Integer.parseInt(txt_Codigo.getText().trim());
+            String nombre = txt_Nombre.getText().trim();
+            double precio = Double.parseDouble(txt_Precio.getText().trim());
+            String aplicaIVA = combo_IVA.getSelectedItem().toString();
+            String estado = combo_Estado.getSelectedItem().toString();
+
+            // Crear el objeto Servicio
+            ec.edu.ups.bd.sistemamedico.modelo.Servicio servicio =
+            new ec.edu.ups.bd.sistemamedico.modelo.Servicio(id, codigo, nombre, precio, aplicaIVA, estado);
+
+            // Llamar al controlador para agregar el servicio
+            servicioControlador.agregarServicio(servicio);
+
+            // Mostrar mensaje de éxito
+            javax.swing.JOptionPane.showMessageDialog(this, "Servicio creado exitosamente.");
+
+            // Limpiar los campos
+            txt_Id.setText("");
+            txt_Codigo.setText("");
+            txt_Nombre.setText("");
+            txt_Precio.setText("");
+            combo_IVA.setSelectedIndex(0);
+            combo_Estado.setSelectedIndex(0);
+
+        } catch(NumberFormatException ex) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Error en la conversión de datos: " + ex.getMessage(),
+                "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        } catch(Exception ex) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Ocurrió un error: " + ex.getMessage(),
+                "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btn_CrearActionPerformed
+
+    private void txt_IdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_IdActionPerformed
+        txt_Codigo.requestFocus();
+    }//GEN-LAST:event_txt_IdActionPerformed
+
+    private void txt_CodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_CodigoActionPerformed
+        txt_Codigo.requestFocus();
+    }//GEN-LAST:event_txt_CodigoActionPerformed
+
+    private void txt_NombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_NombreActionPerformed
+        txt_Nombre.requestFocus();
+    }//GEN-LAST:event_txt_NombreActionPerformed
+
+    private void txt_PrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_PrecioActionPerformed
+        txt_Precio.requestFocus();
+    }//GEN-LAST:event_txt_PrecioActionPerformed
+
+    private void combo_IVA1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_IVA1ActionPerformed
+        combo_Estado.requestFocus();
+    }//GEN-LAST:event_combo_IVA1ActionPerformed
+
+    private void combo_Estado1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_Estado1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_combo_Estado1ActionPerformed
+
+    private void btn_ActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ActualizarActionPerformed
+        try {
+            // Leer y parsear los datos de los campos
+            int id = Integer.parseInt(txt_Id.getText().trim());
+            int codigo = Integer.parseInt(txt_Codigo.getText().trim());
+            String nombre = txt_Nombre.getText().trim();
+            double precio = Double.parseDouble(txt_Precio.getText().trim());
+            String aplicaIVA = combo_IVA.getSelectedItem().toString();
+            String estado = combo_Estado.getSelectedItem().toString();
+
+            // Crear el objeto Servicio
+            ec.edu.ups.bd.sistemamedico.modelo.Servicio servicio =
+            new ec.edu.ups.bd.sistemamedico.modelo.Servicio(id, codigo, nombre, precio, aplicaIVA, estado);
+
+            // Llamar al controlador para agregar el servicio
+            servicioControlador.agregarServicio(servicio);
+
+            // Mostrar mensaje de éxito
+            javax.swing.JOptionPane.showMessageDialog(this, "Servicio creado exitosamente.");
+
+            // Limpiar los campos
+            txt_Id.setText("");
+            txt_Codigo.setText("");
+            txt_Nombre.setText("");
+            txt_Precio.setText("");
+            combo_IVA.setSelectedIndex(0);
+            combo_Estado.setSelectedIndex(0);
+
+        } catch(NumberFormatException ex) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Error en la conversión de datos: " + ex.getMessage(),
+                "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        } catch(Exception ex) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Ocurrió un error: " + ex.getMessage(),
+                "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btn_ActualizarActionPerformed
+
+    private void txt_Id1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_Id1ActionPerformed
+        txt_Codigo.requestFocus();
+    }//GEN-LAST:event_txt_Id1ActionPerformed
+
+    private void txt_Codigo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_Codigo1ActionPerformed
+        txt_Codigo.requestFocus();
+    }//GEN-LAST:event_txt_Codigo1ActionPerformed
+
+    private void txt_Nombre1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_Nombre1ActionPerformed
+        txt_Nombre.requestFocus();
+    }//GEN-LAST:event_txt_Nombre1ActionPerformed
+
+    private void txt_Precio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_Precio1ActionPerformed
+        txt_Precio.requestFocus();
+    }//GEN-LAST:event_txt_Precio1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_Actualizar;
+    private javax.swing.JButton btn_Buscar;
+    private javax.swing.JButton btn_Crear;
+    private javax.swing.JComboBox<String> combo_Estado;
+    private javax.swing.JComboBox<String> combo_Estado1;
+    private javax.swing.JComboBox<String> combo_IVA;
+    private javax.swing.JComboBox<String> combo_IVA1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JTextField txt_Codigo;
+    private javax.swing.JTextField txt_Codigo1;
+    private javax.swing.JTextField txt_Id;
+    private javax.swing.JTextField txt_Id1;
+    private javax.swing.JTextField txt_Nombre;
+    private javax.swing.JTextField txt_Nombre1;
+    private javax.swing.JTextField txt_Precio;
+    private javax.swing.JTextField txt_Precio1;
     // End of variables declaration//GEN-END:variables
 }

@@ -6,6 +6,7 @@ package ec.edu.ups.bd.sistemamedico.modelo;
 
 public class Servicio {
     private int id;
+    private int codigo;
     private String nombre;
     private double precio;
     private String aplicaIVA;
@@ -14,8 +15,9 @@ public class Servicio {
     public Servicio() {
     }
 
-    public Servicio(int id, String nombre, double precio, String aplicaIVA, String servEstado) {
+    public Servicio(int id, int codigo, String nombre, double precio, String aplicaIVA, String servEstado) {
         this.id = id;
+        this.codigo = codigo;
         this.nombre = nombre;
         this.precio = precio;
         this.aplicaIVA = aplicaIVA;
@@ -23,12 +25,14 @@ public class Servicio {
     }
 
     public int getId() { return id; }
+    public int getCodigo() { return codigo; }
     public String getNombre() { return nombre; }
     public double getPrecio() { return precio; }
     public String getAplicaIVA() { return aplicaIVA; }
     public String getEstado() { return servEstado; }
 
     public void setId(int id) { this.id = id; }
+    public void setCodigo(int Codigo) {this.codigo = codigo;}
     public void setNombre(String nombre) { this.nombre = nombre; }
     public void setPrecio(double precio) { this.precio = precio; }
     public void setAplicaIVA(String aplicaIVA) { this.aplicaIVA = aplicaIVA; }
@@ -58,7 +62,7 @@ public class Servicio {
 
     @Override
     public String toString() {
-        return "Servicio{" + "id=" + id + ", nombre=" + nombre + ", precio=" + precio + ", aplicaIVA=" + aplicaIVA + ", estado=" + servEstado + '}';
+        return "Servicio{" + "id=" + id + ",codigo=" + codigo + ", nombre=" + nombre + ", precio=" + precio + ", aplicaIVA=" + aplicaIVA + ", estado=" + servEstado + '}';
     }
     
 }

@@ -23,9 +23,10 @@ public class ServicioDAO implements IServicioDAO{
 
     @Override
     public void agregarServicio(Servicio servicio) throws SQLException {
-        String sql = "INSERT INTO sis_med_servicios (serv_id, serv_nombre, serv_precio, serv_aplicaiva, serv_estado) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO sis_med_servicios (serv_id, serv_codigo, serv_nombre, serv_precio, serv_aplicaiva, serv_estado) VALUES (?, ?, ?, ?, ?, ?)";
         try (PreparedStatement stmt = conexion.prepareStatement(sql)) {
             stmt.setInt(1, servicio.getId());
+            stmt.setInt(2, servicio.getCodigo());
             stmt.setString(2, servicio.getNombre());
             stmt.setDouble(3, servicio.getPrecio());
             stmt.setString(4, servicio.getAplicaIVA());
@@ -42,7 +43,7 @@ public class ServicioDAO implements IServicioDAO{
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 return new Servicio(
-                    rs.getInt("serv_id"), rs.getString("serv_nombre"), rs.getDouble("serv_precio"),
+                    rs.getInt("serv_id"), rs.getInt("serv_codigo"), rs.getString("serv_nombre"), rs.getDouble("serv_precio"),
                     rs.getString("serv_aplicaiva"), rs.getString("serv_estado")
                 );
             }
@@ -57,7 +58,7 @@ public class ServicioDAO implements IServicioDAO{
         try (Statement stmt = conexion.createStatement(); ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
                 servicios.add(new Servicio(
-                    rs.getInt("serv_id"), rs.getString("serv_nombre"), rs.getDouble("serv_precio"),
+                    rs.getInt("serv_id"), rs.getInt("serv_codigo"), rs.getString("serv_nombre"), rs.getDouble("serv_precio"),
                     rs.getString("serv_aplicaiva"), rs.getString("serv_estado")
                 ));
             }
@@ -67,13 +68,14 @@ public class ServicioDAO implements IServicioDAO{
 
     @Override
     public void actualizarServicio(Servicio servicio) throws SQLException {
-        String sql = "UPDATE sis_med_servicios SET serv_nombre = ?, serv_precio = ?, serv_aplicaiva = ?, serv_estado = ? WHERE serv_id = ?";
+        String sql = "UPDATE sis_med_servicios SET serv_codigo = ?, serv_nombre = ?, serv_precio = ?, serv_aplicaiva = ?, serv_estado = ? WHERE serv_id = ?";
         try (PreparedStatement stmt = conexion.prepareStatement(sql)) {
-            stmt.setString(1, servicio.getNombre());
-            stmt.setDouble(2, servicio.getPrecio());
-            stmt.setString(3, servicio.getAplicaIVA());
-            stmt.setString(4, servicio.getEstado());
-            stmt.setInt(5, servicio.getId());
+            stmt.setInt(1, servicio.getCodigo());
+            stmt.setString(2, servicio.getNombre());
+            stmt.setDouble(3, servicio.getPrecio());
+            stmt.setString(4, servicio.getAplicaIVA());
+            stmt.setString(5, servicio.getEstado());
+            stmt.setInt(6, servicio.getId());
             stmt.executeUpdate();
         }
     }

@@ -122,7 +122,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         usuarioMenu.setMnemonic('f');
         usuarioMenu.setText("Usuario");
-        usuarioMenu.setEnabled(false);
         usuarioMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usuarioMenuActionPerformed(evt);
@@ -182,7 +181,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         personaMenu.setMnemonic('f');
         personaMenu.setText("Persona");
-        personaMenu.setEnabled(false);
         personaMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 personaMenuActionPerformed(evt);
@@ -242,7 +240,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         citaMenu.setMnemonic('f');
         citaMenu.setText("Cita");
-        citaMenu.setEnabled(false);
         citaMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 citaMenuActionPerformed(evt);
@@ -302,7 +299,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         servicioMenu.setMnemonic('f');
         servicioMenu.setText("Servicio");
-        servicioMenu.setEnabled(false);
         servicioMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 servicioMenuActionPerformed(evt);
@@ -362,7 +358,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         facturaMenu.setMnemonic('f');
         facturaMenu.setText("Factura");
-        facturaMenu.setEnabled(false);
         facturaMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 facturaMenuActionPerformed(evt);
@@ -422,7 +417,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         detFacturaMenu.setMnemonic('f');
         detFacturaMenu.setText("Detalle Factura");
-        detFacturaMenu.setEnabled(false);
         detFacturaMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 detFacturaMenuActionPerformed(evt);
