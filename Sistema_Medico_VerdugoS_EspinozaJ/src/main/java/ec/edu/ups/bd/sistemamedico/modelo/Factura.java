@@ -14,6 +14,9 @@ public class Factura {
     private Usuario usuario;
     private List<DetFactura> detalles;
 
+    public Factura() {
+    }
+    
     public Factura(int id, int numero, Date fechaEmision, double subtotal, double iva, double total, Persona paciente, Usuario usuario, List<DetFactura> detalles) {
         this.id = id;
         this.numero = numero;
@@ -45,4 +48,32 @@ public class Factura {
     public void setPaciente(Persona paciente) { this.paciente = paciente; }
     public void setUsuario(Usuario usuario) { this.usuario = usuario; }
     public void setDetalles(List<DetFactura> detalles) { this.detalles = detalles; }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 97 * hash + this.id;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Factura other = (Factura) obj;
+        return this.id == other.id;
+    }
+
+    @Override
+    public String toString() {
+        return "Factura{" + "id=" + id + ", numero=" + numero + ", fechaEmision=" + fechaEmision + ", subtotal=" + subtotal + ", iva=" + iva + ", total=" + total + ", paciente=" + paciente + ", usuario=" + usuario + ", detalles=" + detalles + '}';
+    }
+    
 }

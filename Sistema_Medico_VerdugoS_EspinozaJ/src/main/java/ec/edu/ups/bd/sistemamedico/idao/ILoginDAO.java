@@ -5,7 +5,8 @@
 package ec.edu.ups.bd.sistemamedico.idao;
 
 import ec.edu.ups.bd.sistemamedico.modelo.Usuario;
+import java.sql.SQLException;
 
 public interface ILoginDAO {
-    Usuario autenticar(String nombre, String contrasena);
+    Usuario autenticar(String nombre, String contrasena) throws SQLException;
 }

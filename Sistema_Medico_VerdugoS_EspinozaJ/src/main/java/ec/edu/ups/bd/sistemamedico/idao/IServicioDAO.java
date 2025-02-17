@@ -5,12 +5,14 @@
 package ec.edu.ups.bd.sistemamedico.idao;
 
 import ec.edu.ups.bd.sistemamedico.modelo.Servicio;
+import java.sql.SQLException;
 import java.util.List;
 
 public interface IServicioDAO {
-    void agregarServicio(Servicio servicio);
-    Servicio buscarServicio(int id);
-    List<Servicio> listarServicios();
-    void actualizarServicio(Servicio servicio);
-    void eliminarServicio(int id);
+    void agregarServicio(Servicio servicio) throws SQLException;
+    Servicio buscarServicio(int id) throws SQLException;
+    List<Servicio> listarServicios() throws SQLException;
+    void actualizarServicio(Servicio servicio) throws SQLException;
+    void eliminarServicio(int id) throws SQLException;
 }
+

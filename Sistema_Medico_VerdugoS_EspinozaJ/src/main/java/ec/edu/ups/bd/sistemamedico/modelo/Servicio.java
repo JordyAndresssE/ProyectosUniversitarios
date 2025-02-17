@@ -8,26 +8,57 @@ public class Servicio {
     private int id;
     private String nombre;
     private double precio;
-    private boolean aplicaIVA;
-    private boolean estado;
+    private String aplicaIVA;
+    private String servEstado;
 
-    public Servicio(int id, String nombre, double precio, boolean aplicaIVA, boolean estado) {
+    public Servicio() {
+    }
+
+    public Servicio(int id, String nombre, double precio, String aplicaIVA, String servEstado) {
         this.id = id;
         this.nombre = nombre;
         this.precio = precio;
         this.aplicaIVA = aplicaIVA;
-        this.estado = estado;
+        this.servEstado = servEstado;
     }
 
     public int getId() { return id; }
     public String getNombre() { return nombre; }
     public double getPrecio() { return precio; }
-    public boolean isAplicaIVA() { return aplicaIVA; }
-    public boolean isEstado() { return estado; }
+    public String getAplicaIVA() { return aplicaIVA; }
+    public String getEstado() { return servEstado; }
 
     public void setId(int id) { this.id = id; }
     public void setNombre(String nombre) { this.nombre = nombre; }
     public void setPrecio(double precio) { this.precio = precio; }
-    public void setAplicaIVA(boolean aplicaIVA) { this.aplicaIVA = aplicaIVA; }
-    public void setEstado(boolean estado) { this.estado = estado; }
+    public void setAplicaIVA(String aplicaIVA) { this.aplicaIVA = aplicaIVA; }
+    public void setEstado(String servEstado) { this.servEstado = servEstado; }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 79 * hash + this.id;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Servicio other = (Servicio) obj;
+        return this.id == other.id;
+    }
+
+    @Override
+    public String toString() {
+        return "Servicio{" + "id=" + id + ", nombre=" + nombre + ", precio=" + precio + ", aplicaIVA=" + aplicaIVA + ", estado=" + servEstado + '}';
+    }
+    
 }

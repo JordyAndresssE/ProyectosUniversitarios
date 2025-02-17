@@ -2,6 +2,7 @@ package ec.edu.ups.bd.sistemamedico.controlador;
 
 import ec.edu.ups.bd.sistemamedico.dao.DetFacturaDAO;
 import ec.edu.ups.bd.sistemamedico.modelo.DetFactura;
+import java.sql.SQLException;
 import java.util.List;
 
 public class DetFacturaControlador {
@@ -12,22 +13,44 @@ public class DetFacturaControlador {
     }
 
     public void agregarDetalle(DetFactura detalle) {
-        detFacturaDAO.agregarDetalle(detalle);
+        try {
+            detFacturaDAO.agregarDetalle(detalle);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public DetFactura buscarDetalle(int id) {
-        return detFacturaDAO.buscarDetalle(id);
+        try {
+            return detFacturaDAO.buscarDetalle(id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public List<DetFactura> listarDetalles() {
-        return detFacturaDAO.listarDetalles();
+        try {
+            return detFacturaDAO.listarDetalles();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public void actualizarDetalle(DetFactura detalle) {
-        detFacturaDAO.actualizarDetalle(detalle);
+        try {
+            detFacturaDAO.actualizarDetalle(detalle);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void eliminarDetalle(int id) {
-        detFacturaDAO.eliminarDetalle(id);
+        try {
+            detFacturaDAO.eliminarDetalle(id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

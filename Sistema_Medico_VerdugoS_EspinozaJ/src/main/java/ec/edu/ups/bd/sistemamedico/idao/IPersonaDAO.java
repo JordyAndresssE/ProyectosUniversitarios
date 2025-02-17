@@ -5,12 +5,13 @@
 package ec.edu.ups.bd.sistemamedico.idao;
 
 import ec.edu.ups.bd.sistemamedico.modelo.Persona;
+import java.sql.SQLException;
 import java.util.List;
 
 public interface IPersonaDAO {
-    void agregarPersona(Persona persona);
-    Persona buscarPersona(int id);
-    List<Persona> listarPersonas();
-    void actualizarPersona(Persona persona);
-    void eliminarPersona(int id);
+    void agregarPersona(Persona persona) throws SQLException;
+    Persona buscarPersona(int id) throws SQLException;
+    List<Persona> listarPersonas() throws SQLException;
+    void actualizarPersona(Persona persona) throws SQLException;
+    void eliminarPersona(int id) throws SQLException;
 }

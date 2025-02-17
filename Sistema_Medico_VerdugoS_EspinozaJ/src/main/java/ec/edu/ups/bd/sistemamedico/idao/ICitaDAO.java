@@ -5,12 +5,13 @@
 package ec.edu.ups.bd.sistemamedico.idao;
 
 import ec.edu.ups.bd.sistemamedico.modelo.Cita;
+import java.sql.SQLException;
 import java.util.List;
 
 public interface ICitaDAO {
-    void agregarCita(Cita cita);
-    Cita buscarCita(int id);
-    List<Cita> listarCitas();
-    void actualizarCita(Cita cita);
-    void eliminarCita(int id);
+    void agregarCita(Cita cita) throws SQLException;
+    Cita buscarCita(int id) throws SQLException;
+    List<Cita> listarCitas() throws SQLException;
+    void actualizarCita(Cita cita) throws SQLException;
+    void eliminarCita(int id) throws SQLException;
 }

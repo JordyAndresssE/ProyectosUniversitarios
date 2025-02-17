@@ -2,6 +2,7 @@ package ec.edu.ups.bd.sistemamedico.controlador;
 
 import ec.edu.ups.bd.sistemamedico.dao.ServicioDAO;
 import ec.edu.ups.bd.sistemamedico.modelo.Servicio;
+import java.sql.SQLException;
 import java.util.List;
 
 public class ServicioControlador {
@@ -12,22 +13,44 @@ public class ServicioControlador {
     }
 
     public void agregarServicio(Servicio servicio) {
-        servicioDAO.agregarServicio(servicio);
+        try {
+            servicioDAO.agregarServicio(servicio);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public Servicio buscarServicio(int id) {
-        return servicioDAO.buscarServicio(id);
+        try {
+            return servicioDAO.buscarServicio(id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public List<Servicio> listarServicios() {
-        return servicioDAO.listarServicios();
+        try {
+            return servicioDAO.listarServicios();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public void actualizarServicio(Servicio servicio) {
-        servicioDAO.actualizarServicio(servicio);
+        try {
+            servicioDAO.actualizarServicio(servicio);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void eliminarServicio(int id) {
-        servicioDAO.eliminarServicio(id);
+        try {
+            servicioDAO.eliminarServicio(id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

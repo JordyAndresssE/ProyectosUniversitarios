@@ -5,12 +5,13 @@
 package ec.edu.ups.bd.sistemamedico.idao;
 
 import ec.edu.ups.bd.sistemamedico.modelo.Factura;
+import java.sql.SQLException;
 import java.util.List;
 
 public interface IFacturaDAO {
-    void agregarFactura(Factura factura);
-    Factura buscarFactura(int id);
-    List<Factura> listarFacturas();
-    void actualizarFactura(Factura factura);
-    void eliminarFactura(int id);
+    void agregarFactura(Factura factura) throws SQLException;
+    Factura buscarFactura(int id) throws SQLException;
+    List<Factura> listarFacturas() throws SQLException;
+    void actualizarFactura(Factura factura) throws SQLException;
+    void eliminarFactura(int id) throws SQLException;
 }

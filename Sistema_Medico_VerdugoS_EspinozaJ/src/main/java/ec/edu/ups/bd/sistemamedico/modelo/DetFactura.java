@@ -14,6 +14,9 @@ public class DetFactura {
     private Factura factura;
     private Servicio servicio;
 
+    public DetFactura() {
+    }
+
     public DetFactura(int id, int cantidad, double precioUnitario, double subtotal, double iva, double total, Factura factura, Servicio servicio) {
         this.id = id;
         this.cantidad = cantidad;
@@ -42,5 +45,33 @@ public class DetFactura {
     public void setTotal(double total) { this.total = total; }
     public void setFactura(Factura factura) { this.factura = factura; }
     public void setServicio(Servicio servicio) { this.servicio = servicio; }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 59 * hash + this.id;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final DetFactura other = (DetFactura) obj;
+        return this.id == other.id;
+    }
+
+    @Override
+    public String toString() {
+        return "DetFactura{" + "id=" + id + ", cantidad=" + cantidad + ", precioUnitario=" + precioUnitario + ", subtotal=" + subtotal + ", iva=" + iva + ", total=" + total + ", factura=" + factura + ", servicio=" + servicio + '}';
+    }
+    
 }
 

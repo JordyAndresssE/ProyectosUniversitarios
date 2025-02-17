@@ -5,12 +5,14 @@
 package ec.edu.ups.bd.sistemamedico.idao;
 
 import ec.edu.ups.bd.sistemamedico.modelo.Usuario;
+import java.sql.SQLException;
 import java.util.List;
 
 public interface IUsuarioDAO {
-    void agregarUsuario(Usuario usuario);
-    Usuario buscarUsuario(int id);
-    List<Usuario> listarUsuarios();
-    void actualizarUsuario(Usuario usuario);
-    void eliminarUsuario(int id);
+    void agregarUsuario(Usuario usuario) throws SQLException;
+    Usuario buscarUsuario(int id) throws SQLException;
+    List<Usuario> listarUsuarios() throws SQLException;
+    void actualizarUsuario(Usuario usuario) throws SQLException;
+    void eliminarUsuario(int id) throws SQLException;
+    Usuario autenticar(String nombre, String contrasena) throws SQLException;
 }

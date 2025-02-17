@@ -14,6 +14,9 @@ public class Cita {
     private Persona paciente;
     private Persona medico;
 
+    public Cita() {
+    }
+
     public Cita(int id, Date fechaHora, String estado, Usuario usuario, Persona paciente, Persona medico) {
         this.id = id;
         this.fechaHora = fechaHora;
@@ -36,4 +39,32 @@ public class Cita {
     public void setUsuario(Usuario usuario) { this.usuario = usuario; }
     public void setPaciente(Persona paciente) { this.paciente = paciente; }
     public void setMedico(Persona medico) { this.medico = medico; }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 67 * hash + this.id;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Cita other = (Cita) obj;
+        return this.id == other.id;
+    }
+
+    @Override
+    public String toString() {
+        return "Cita{" + "id=" + id + ", fechaHora=" + fechaHora + ", estado=" + estado + ", usuario=" + usuario + ", paciente=" + paciente + ", medico=" + medico + '}';
+    }
+    
 }

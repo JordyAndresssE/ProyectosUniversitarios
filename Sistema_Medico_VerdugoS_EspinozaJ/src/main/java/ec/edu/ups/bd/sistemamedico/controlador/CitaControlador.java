@@ -2,6 +2,7 @@ package ec.edu.ups.bd.sistemamedico.controlador;
 
 import ec.edu.ups.bd.sistemamedico.dao.CitaDAO;
 import ec.edu.ups.bd.sistemamedico.modelo.Cita;
+import java.sql.SQLException;
 import java.util.List;
 
 public class CitaControlador {
@@ -12,22 +13,44 @@ public class CitaControlador {
     }
 
     public void agregarCita(Cita cita) {
-        citaDAO.agregarCita(cita);
+        try {
+            citaDAO.agregarCita(cita);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public Cita buscarCita(int id) {
-        return citaDAO.buscarCita(id);
+        try {
+            return citaDAO.buscarCita(id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public List<Cita> listarCitas() {
-        return citaDAO.listarCitas();
+        try {
+            return citaDAO.listarCitas();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public void actualizarCita(Cita cita) {
-        citaDAO.actualizarCita(cita);
+        try {
+            citaDAO.actualizarCita(cita);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void eliminarCita(int id) {
-        citaDAO.eliminarCita(id);
+        try {
+            citaDAO.eliminarCita(id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
