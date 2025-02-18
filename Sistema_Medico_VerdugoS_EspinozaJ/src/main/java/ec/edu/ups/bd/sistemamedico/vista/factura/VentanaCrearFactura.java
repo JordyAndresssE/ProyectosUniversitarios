@@ -4,8 +4,38 @@
  */
 package ec.edu.ups.bd.sistemamedico.vista.factura;
 
+import ec.edu.ups.bd.sistemamedico.controlador.DetFacturaControlador;
+import ec.edu.ups.bd.sistemamedico.controlador.FacturaControlador;
+import ec.edu.ups.bd.sistemamedico.controlador.PersonaControlador;
+import ec.edu.ups.bd.sistemamedico.controlador.ServicioControlador;
+import ec.edu.ups.bd.sistemamedico.controlador.UsuarioControlador;
+import ec.edu.ups.bd.sistemamedico.dao.ConexionBD;
+import ec.edu.ups.bd.sistemamedico.dao.DetFacturaDAO;
+import ec.edu.ups.bd.sistemamedico.dao.FacturaDAO;
+import ec.edu.ups.bd.sistemamedico.dao.PersonaDAO;
+import ec.edu.ups.bd.sistemamedico.dao.ServicioDAO;
+import ec.edu.ups.bd.sistemamedico.dao.UsuarioDAO;
+import ec.edu.ups.bd.sistemamedico.modelo.DetFactura;
+import ec.edu.ups.bd.sistemamedico.modelo.Factura;
+import ec.edu.ups.bd.sistemamedico.modelo.Persona;
+import ec.edu.ups.bd.sistemamedico.modelo.Servicio;
+import ec.edu.ups.bd.sistemamedico.modelo.Usuario;
 import ec.edu.ups.bd.sistemamedico.vista.cita.*;
 import ec.edu.ups.bd.sistemamedico.vista.persona.*;
+import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.font.PDType1Font;
+import org.apache.pdfbox.pdmodel.font.Standard14Fonts;
 
 /**
  *
@@ -29,21 +59,573 @@ public class VentanaCrearFactura extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblPacientes = new javax.swing.JLabel();
+        txtFechaFactura = new javax.swing.JTextField();
+        lblSubtotal = new javax.swing.JLabel();
+        txtSubtotal = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        lstUsuarios = new javax.swing.JList<>();
+        lblID = new javax.swing.JLabel();
+        btnMostrarPacientes = new javax.swing.JButton();
+        btnGuardar = new javax.swing.JButton();
+        txtID = new javax.swing.JTextField();
+        lblUsuarios = new javax.swing.JLabel();
+        lblFecha = new javax.swing.JLabel();
+        btnMostrarUsuarios = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        lstPacientes = new javax.swing.JList<>();
+        lblNumeroFactura = new javax.swing.JLabel();
+        txtNumeroFactura = new javax.swing.JTextField();
+        lblTotalIVA = new javax.swing.JLabel();
+        txtValorIVA = new javax.swing.JTextField();
+        lblTotalFactura = new javax.swing.JLabel();
+        txtTotalFactura = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblDetFactura = new javax.swing.JTable();
+        lblNumeroFactura1 = new javax.swing.JLabel();
+        btnMostrarDetFactura = new javax.swing.JButton();
+        btnExportar = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
+
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
+        setTitle("Crear Factura");
+
+        lblPacientes.setText("Pacientes");
+
+        txtFechaFactura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFechaFacturaActionPerformed(evt);
+            }
+        });
+
+        lblSubtotal.setText("Subtotal");
+
+        txtSubtotal.setEnabled(false);
+        txtSubtotal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSubtotalActionPerformed(evt);
+            }
+        });
+
+        jScrollPane2.setViewportView(lstUsuarios);
+
+        lblID.setText("ID");
+
+        btnMostrarPacientes.setText("Mostrar");
+        btnMostrarPacientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrarPacientesActionPerformed(evt);
+            }
+        });
+
+        btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
+
+        txtID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIDActionPerformed(evt);
+            }
+        });
+
+        lblUsuarios.setText("Usuarios");
+
+        lblFecha.setText("Fecha (yyyy-MM-dd HH:mm:ss)");
+
+        btnMostrarUsuarios.setText("Mostrar");
+        btnMostrarUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrarUsuariosActionPerformed(evt);
+            }
+        });
+
+        jScrollPane3.setViewportView(lstPacientes);
+
+        lblNumeroFactura.setText("Número de Factura");
+
+        txtNumeroFactura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNumeroFacturaActionPerformed(evt);
+            }
+        });
+
+        lblTotalIVA.setText("Valor Total IVA");
+
+        txtValorIVA.setEnabled(false);
+        txtValorIVA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtValorIVAActionPerformed(evt);
+            }
+        });
+
+        lblTotalFactura.setText("Valor Total Factura");
+
+        txtTotalFactura.setEnabled(false);
+        txtTotalFactura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTotalFacturaActionPerformed(evt);
+            }
+        });
+
+        tblDetFactura.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "Servicio", "Cantidad", "Precio Unitario", "Subtotal", "IVA", "Total"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Double.class, java.lang.Double.class, java.lang.Float.class, java.lang.Double.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblDetFactura.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblDetFacturaMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblDetFactura);
+
+        lblNumeroFactura1.setText("Detalles de Factura");
+
+        btnMostrarDetFactura.setText("Mostrar");
+        btnMostrarDetFactura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrarDetFacturaActionPerformed(evt);
+            }
+        });
+
+        btnExportar.setText("Exportar");
+        btnExportar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExportarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblUsuarios)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblSubtotal)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtSubtotal, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblTotalFactura)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtTotalFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblTotalIVA)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtValorIVA, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnMostrarPacientes)
+                            .addComponent(btnMostrarUsuarios, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(lblFecha)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtFechaFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(69, 69, 69)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(lblNumeroFactura)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(txtNumeroFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                            .addComponent(lblID)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblPacientes)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(173, 173, 173)
+                                .addComponent(btnGuardar)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(lblNumeroFactura1)
+                                .addGap(153, 153, 153))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(btnMostrarDetFactura)
+                                .addGap(183, 183, 183))))))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(380, 380, 380)
+                        .addComponent(btnExportar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 833, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblNumeroFactura1, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblNumeroFactura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtNumeroFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(90, 90, 90)
+                                .addComponent(btnMostrarPacientes))
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(lblFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtFechaFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(57, 57, 57)
+                                        .addComponent(lblPacientes))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(52, 52, 52)
+                                .addComponent(btnMostrarUsuarios))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(61, 61, 61)
+                                .addComponent(lblUsuarios)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblSubtotal, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
+                            .addComponent(txtSubtotal))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblTotalIVA, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtValorIVA, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblTotalFactura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtTotalFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(34, 34, 34))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnGuardar)
+                    .addComponent(btnMostrarDetFactura))
+                .addGap(13, 13, 13)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnExportar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txtFechaFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaFacturaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFechaFacturaActionPerformed
+
+    private void txtSubtotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSubtotalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSubtotalActionPerformed
+
+    private void btnMostrarPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarPacientesActionPerformed
+        PersonaControlador personaControlador = new PersonaControlador(new PersonaDAO(ConexionBD.getConexion()));
+        List<Persona> pacientes = personaControlador.listarPersonas();
+
+        DefaultListModel<String> modelo = new DefaultListModel<>();
+        for (Persona p : pacientes) {
+            modelo.addElement(p.getCedula() + " - " + p.getNombres() + " " + p.getApellidos());
+        }
+        lstPacientes.setModel(modelo);
+    }//GEN-LAST:event_btnMostrarPacientesActionPerformed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        try {
+            int idFactura = Integer.parseInt(txtID.getText()); // ID ingresado manualmente
+            int numeroFactura = Integer.parseInt(txtNumeroFactura.getText());
+            String textoFecha = txtFechaFactura.getText();
+            SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Date fecha = formato.parse(textoFecha);
+
+            // Obtener paciente por ID
+            String pacienteSeleccionado = lstPacientes.getSelectedValue();
+            int idPaciente = Integer.parseInt(pacienteSeleccionado.split(" - ")[0]);
+            PersonaControlador personaControlador = new PersonaControlador(new PersonaDAO(ConexionBD.getConexion()));
+            Persona paciente = personaControlador.buscarPersona(idPaciente);
+
+            // Obtener usuario por ID
+            String usuarioSeleccionado = lstUsuarios.getSelectedValue();
+            int idUsuario = Integer.parseInt(usuarioSeleccionado.split(" - ")[0]);
+            UsuarioControlador usuarioControlador = new UsuarioControlador(new UsuarioDAO(ConexionBD.getConexion()));
+            Usuario usuario = usuarioControlador.buscarUsuario(idUsuario);
+
+            // Calcular totales
+            double subtotal = Double.parseDouble(txtSubtotal.getText());
+            double valorIVA = Double.parseDouble(txtValorIVA.getText());
+            double totalFactura = Double.parseDouble(txtTotalFactura.getText());
+
+            // Obtener detalles de la factura
+            DetFacturaControlador detFacturaControlador = new DetFacturaControlador(new DetFacturaDAO(ConexionBD.getConexion()));
+            DefaultTableModel modelo = (DefaultTableModel) tblDetFactura.getModel();
+            List<DetFactura> detalles = new ArrayList<>();
+            for (int i = 0; i < modelo.getRowCount(); i++) {
+                int idServicio = Integer.parseInt(modelo.getValueAt(i, 0).toString());
+                ServicioControlador servicioControlador = new ServicioControlador(new ServicioDAO(ConexionBD.getConexion()));
+                Servicio servicio = servicioControlador.buscarServicio(idServicio);
+
+                int cantidad = Integer.parseInt(modelo.getValueAt(i, 2).toString());
+                double precioUnitario = Double.parseDouble(modelo.getValueAt(i, 3).toString());
+                double sub = Double.parseDouble(modelo.getValueAt(i, 4).toString());
+                double iva = Double.parseDouble(modelo.getValueAt(i, 5).toString());
+                double total = Double.parseDouble(modelo.getValueAt(i, 6).toString());
+
+                DetFactura detalle = new DetFactura(0, cantidad, precioUnitario, sub, iva, total, null, servicio);
+                detalles.add(detalle);
+            }
+
+            // Crear Factura con el ID ingresado manualmente
+            Factura factura = new Factura(idFactura, numeroFactura, fecha, subtotal, valorIVA, totalFactura, paciente, usuario, detalles);
+
+            FacturaControlador facturaControlador = new FacturaControlador(new FacturaDAO(ConexionBD.getConexion()));
+            facturaControlador.agregarFactura(factura);
+
+            for (DetFactura detalle : detalles) {
+                detalle.setFactura(factura);
+                detFacturaControlador.agregarDetalle(detalle);
+            }
+
+            JOptionPane.showMessageDialog(this, "Factura guardada exitosamente.");
+
+            // Limpiar campos
+            txtID.setText("");
+            txtNumeroFactura.setText("");
+            txtFechaFactura.setText("");
+            txtSubtotal.setText("");
+            txtValorIVA.setText("");
+            txtTotalFactura.setText("");
+
+        } catch (ParseException e) {
+            JOptionPane.showMessageDialog(this, "Formato de fecha incorrecto. Use yyyy-MM-dd HH:mm:ss.");
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Error en los valores numéricos.");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error al guardar la factura: " + e.getMessage());
+        }
+    }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void txtIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIDActionPerformed
+
+    private void btnMostrarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarUsuariosActionPerformed
+        UsuarioControlador usuarioControlador = new UsuarioControlador(new UsuarioDAO(ConexionBD.getConexion()));
+        List<Usuario> usuarios = usuarioControlador.listarUsuarios();
+
+        DefaultListModel<String> modelo = new DefaultListModel<>();
+        for (Usuario u : usuarios) {
+            modelo.addElement(u.getNombre() + " - " + u.getRol());
+        }
+        lstUsuarios.setModel(modelo);
+    }//GEN-LAST:event_btnMostrarUsuariosActionPerformed
+
+    private void txtNumeroFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroFacturaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNumeroFacturaActionPerformed
+
+    private void txtValorIVAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtValorIVAActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtValorIVAActionPerformed
+
+    private void txtTotalFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTotalFacturaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTotalFacturaActionPerformed
+
+    private void btnMostrarDetFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarDetFacturaActionPerformed
+        DetFacturaControlador detFacturaControlador = new DetFacturaControlador(new DetFacturaDAO(ConexionBD.getConexion()));
+        List<DetFactura> detalles = detFacturaControlador.listarDetalles();
+
+        DefaultTableModel modelo = (DefaultTableModel) tblDetFactura.getModel();
+        modelo.setRowCount(0); // Limpiar tabla
+
+        for (DetFactura d : detalles) {
+            modelo.addRow(new Object[]{
+                d.getId(),
+                d.getServicio().getNombre(),
+                d.getCantidad(),
+                d.getPrecioUnitario(),
+                d.getSubtotal(),
+                d.getIva(),
+                d.getTotal()
+            });
+        }
+    }//GEN-LAST:event_btnMostrarDetFacturaActionPerformed
+
+    private void tblDetFacturaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDetFacturaMouseClicked
+        int[] filasSeleccionadas = tblDetFactura.getSelectedRows();
+
+        double subtotal = 0;
+        double totalIVA = 0;
+        double totalFactura = 0;
+
+        for (int fila : filasSeleccionadas) {
+            subtotal += Double.parseDouble(tblDetFactura.getValueAt(fila, 4).toString());
+            totalIVA += Double.parseDouble(tblDetFactura.getValueAt(fila, 5).toString());
+            totalFactura += Double.parseDouble(tblDetFactura.getValueAt(fila, 6).toString());
+        }
+
+        txtSubtotal.setText(String.valueOf(subtotal));
+        txtValorIVA.setText(String.valueOf(totalIVA));
+        txtTotalFactura.setText(String.valueOf(totalFactura));
+    }//GEN-LAST:event_tblDetFacturaMouseClicked
+
+    private void btnExportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportarActionPerformed
+      try {
+        if (txtID.getText().isEmpty() || txtNumeroFactura.getText().isEmpty() || txtFechaFactura.getText().isEmpty() ||
+            txtSubtotal.getText().isEmpty() || txtValorIVA.getText().isEmpty() || txtTotalFactura.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Debe ingresar y guardar todos los datos de la factura antes de exportar.");
+            return;
+        }
+
+        // Crear documento PDF
+        PDDocument document = new PDDocument();
+        PDPage page = new PDPage();
+        document.addPage(page);
+
+        PDPageContentStream contentStream = new PDPageContentStream(document, page);
+
+        contentStream.beginText();
+        contentStream.setFont(new PDType1Font(Standard14Fonts.FontName.HELVETICA_BOLD), 20);
+        contentStream.newLineAtOffset(200, 750);
+        contentStream.showText("FACTURA ELECTRÓNICA");
+        contentStream.endText();
+
+        contentStream.beginText();
+        contentStream.setFont(new PDType1Font(Standard14Fonts.FontName.HELVETICA), 12);
+        contentStream.newLineAtOffset(50, 700);
+        contentStream.showText("Número de Factura: " + txtNumeroFactura.getText());
+        contentStream.newLineAtOffset(0, -15);
+        contentStream.showText("Fecha de Emisión: " + txtFechaFactura.getText());
+        contentStream.newLineAtOffset(0, -15);
+        contentStream.showText("Paciente: " + lstPacientes.getSelectedValue());
+        contentStream.newLineAtOffset(0, -15);
+        contentStream.showText("Usuario: " + lstUsuarios.getSelectedValue());
+        contentStream.endText();
+
+        contentStream.beginText();
+        contentStream.setFont(new PDType1Font(Standard14Fonts.FontName.HELVETICA), 12);
+        contentStream.newLineAtOffset(50, 600);
+        for (int i = 0; i < tblDetFactura.getRowCount(); i++) {
+            contentStream.showText(tblDetFactura.getValueAt(i, 1) + " - Cant: " + tblDetFactura.getValueAt(i, 2) + " - Total: $" + tblDetFactura.getValueAt(i, 6));
+            contentStream.newLineAtOffset(0, -15);
+        }
+        contentStream.endText();
+
+        contentStream.beginText();
+        contentStream.setFont(new PDType1Font(Standard14Fonts.FontName.HELVETICA_BOLD), 12);
+        contentStream.newLineAtOffset(50, 500);
+        contentStream.showText("Subtotal: $" + txtSubtotal.getText());
+        contentStream.newLineAtOffset(0, -15);
+        contentStream.showText("IVA: $" + txtValorIVA.getText());
+        contentStream.newLineAtOffset(0, -15);
+        contentStream.showText("Total: $" + txtTotalFactura.getText());
+        contentStream.endText();
+
+        contentStream.close();
+        document.save("Factura_" + txtNumeroFactura.getText() + ".pdf");
+        document.close();
+
+        JOptionPane.showMessageDialog(this, "Factura exportada a PDF exitosamente.");
+    } catch (IOException e) {
+        JOptionPane.showMessageDialog(this, "Error al generar el PDF: " + e.getMessage());
+    }  
+    }//GEN-LAST:event_btnExportarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnExportar;
+    private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnMostrarDetFactura;
+    private javax.swing.JButton btnMostrarPacientes;
+    private javax.swing.JButton btnMostrarUsuarios;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel lblFecha;
+    private javax.swing.JLabel lblID;
+    private javax.swing.JLabel lblNumeroFactura;
+    private javax.swing.JLabel lblNumeroFactura1;
+    private javax.swing.JLabel lblPacientes;
+    private javax.swing.JLabel lblSubtotal;
+    private javax.swing.JLabel lblTotalFactura;
+    private javax.swing.JLabel lblTotalIVA;
+    private javax.swing.JLabel lblUsuarios;
+    private javax.swing.JList<String> lstPacientes;
+    private javax.swing.JList<String> lstUsuarios;
+    private javax.swing.JTable tblDetFactura;
+    private javax.swing.JTextField txtFechaFactura;
+    private javax.swing.JTextField txtID;
+    private javax.swing.JTextField txtNumeroFactura;
+    private javax.swing.JTextField txtSubtotal;
+    private javax.swing.JTextField txtTotalFactura;
+    private javax.swing.JTextField txtValorIVA;
     // End of variables declaration//GEN-END:variables
 }

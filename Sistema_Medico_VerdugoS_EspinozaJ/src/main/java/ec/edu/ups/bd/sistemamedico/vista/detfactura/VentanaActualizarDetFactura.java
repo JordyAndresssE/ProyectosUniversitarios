@@ -4,9 +4,16 @@
  */
 package ec.edu.ups.bd.sistemamedico.vista.detfactura;
 
-import ec.edu.ups.bd.sistemamedico.vista.factura.*;
-import ec.edu.ups.bd.sistemamedico.vista.cita.*;
-import ec.edu.ups.bd.sistemamedico.vista.persona.*;
+import ec.edu.ups.bd.sistemamedico.controlador.DetFacturaControlador;
+import ec.edu.ups.bd.sistemamedico.controlador.ServicioControlador;
+import ec.edu.ups.bd.sistemamedico.dao.ConexionBD;
+import ec.edu.ups.bd.sistemamedico.dao.DetFacturaDAO;
+import ec.edu.ups.bd.sistemamedico.dao.ServicioDAO;
+import ec.edu.ups.bd.sistemamedico.modelo.DetFactura;
+import ec.edu.ups.bd.sistemamedico.modelo.Servicio;
+import java.util.List;
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,6 +26,8 @@ public class VentanaActualizarDetFactura extends javax.swing.JInternalFrame {
      */
     public VentanaActualizarDetFactura() {
         initComponents();
+        activarBotones();
+        
     }
 
     /**
@@ -30,21 +39,398 @@ public class VentanaActualizarDetFactura extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnBuscar = new javax.swing.JButton();
+        txtID = new javax.swing.JTextField();
+        txtCantidad = new javax.swing.JTextField();
+        txtPUnitario = new javax.swing.JTextField();
+        txtTotal = new javax.swing.JTextField();
+        lblSubtotal = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        lstServicios = new javax.swing.JList<>();
+        lblID = new javax.swing.JLabel();
+        lblPUitario = new javax.swing.JLabel();
+        txtIVA = new javax.swing.JTextField();
+        txtSubtotal = new javax.swing.JTextField();
+        lblTotal = new javax.swing.JLabel();
+        lblCantidad = new javax.swing.JLabel();
+        lblIVA = new javax.swing.JLabel();
+        lblServicios = new javax.swing.JLabel();
+        btnMostrarServicio = new javax.swing.JButton();
+        lblCantidad1 = new javax.swing.JLabel();
+        txtCantidad1 = new javax.swing.JTextField();
+        btnCancelar = new javax.swing.JButton();
+        btnActualizar = new javax.swing.JButton();
+
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
+        setTitle("Actualizar Detalle Factura");
+
+        btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+
+        txtID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIDActionPerformed(evt);
+            }
+        });
+
+        txtCantidad.setEnabled(false);
+        txtCantidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCantidadActionPerformed(evt);
+            }
+        });
+
+        txtPUnitario.setEnabled(false);
+        txtPUnitario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPUnitarioActionPerformed(evt);
+            }
+        });
+
+        txtTotal.setEnabled(false);
+        txtTotal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTotalActionPerformed(evt);
+            }
+        });
+
+        lblSubtotal.setText("Subtotal");
+        lblSubtotal.setEnabled(false);
+
+        jScrollPane4.setViewportView(lstServicios);
+
+        lblID.setText("ID");
+
+        lblPUitario.setText("Precio Unitario");
+        lblPUitario.setEnabled(false);
+
+        txtIVA.setEnabled(false);
+        txtIVA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIVAActionPerformed(evt);
+            }
+        });
+
+        txtSubtotal.setEnabled(false);
+        txtSubtotal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSubtotalActionPerformed(evt);
+            }
+        });
+
+        lblTotal.setText("Total");
+        lblTotal.setEnabled(false);
+
+        lblCantidad.setText("Cantidad");
+        lblCantidad.setEnabled(false);
+
+        lblIVA.setText("IVA");
+        lblIVA.setEnabled(false);
+
+        lblServicios.setText("Servicios");
+
+        btnMostrarServicio.setText("Mostrar");
+        btnMostrarServicio.setEnabled(false);
+        btnMostrarServicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrarServicioActionPerformed(evt);
+            }
+        });
+
+        lblCantidad1.setText("Servicios");
+        lblCantidad1.setEnabled(false);
+
+        txtCantidad1.setEnabled(false);
+        txtCantidad1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCantidad1ActionPerformed(evt);
+            }
+        });
+
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+
+        btnActualizar.setText("Actualizar");
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(51, 51, 51)
+                                    .addComponent(lblTotal)
+                                    .addGap(12, 12, 12)
+                                    .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(lblIVA)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(txtIVA, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(lblCantidad)
+                                        .addComponent(lblPUitario)
+                                        .addComponent(lblSubtotal))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(txtPUnitario, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txtCantidad, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txtSubtotal, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(lblCantidad1)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(txtCantidad1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblServicios)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnMostrarServicio)
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 17, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(lblID)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnBuscar)
+                                .addGap(172, 172, 172))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 575, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(26, 26, 26))))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(203, 203, 203)
+                .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscar)
+                    .addComponent(lblID))
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(lblServicios))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(btnMostrarServicio))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblCantidad1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCantidad1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(10, 10, 10)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblPUitario, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPUnitario, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(11, 11, 11)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtSubtotal, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblSubtotal, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblIVA, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtIVA, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(11, 11, 11)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        try {
+            int idDetalle = Integer.parseInt(txtID.getText());  // Obtener el ID ingresado
+
+            DetFacturaControlador detFacturaControlador = new DetFacturaControlador(new DetFacturaDAO(ConexionBD.getConexion()));
+            DetFactura detalle = detFacturaControlador.buscarDetalle(idDetalle);  // Buscar en BD
+
+            if (detalle == null) {
+                JOptionPane.showMessageDialog(this, "No se encontró el detalle de factura con el ID ingresado.");
+            } else {
+                // Mostrar datos del detalle en los JTextField
+                txtCantidad.setText(String.valueOf(detalle.getCantidad()));
+                txtPUnitario.setText(String.valueOf(detalle.getPrecioUnitario()));
+                txtSubtotal.setText(String.valueOf(detalle.getSubtotal()));
+                txtIVA.setText(String.valueOf(detalle.getIva()));
+                txtTotal.setText(String.valueOf(detalle.getTotal()));
+
+                // Mostrar el servicio en el JList
+                DefaultListModel<String> modelo = new DefaultListModel<>();
+                modelo.addElement(detalle.getServicio().getId() + " - " + detalle.getServicio().getNombre());
+                lstServicios.setModel(modelo);
+            }
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "El ID debe ser un número entero.");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error al buscar el detalle de factura: " + e.getMessage());
+        }
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void txtIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIDActionPerformed
+
+    private void txtCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantidadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCantidadActionPerformed
+
+    private void txtPUnitarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPUnitarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPUnitarioActionPerformed
+
+    private void txtTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTotalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTotalActionPerformed
+
+    private void txtIVAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIVAActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIVAActionPerformed
+
+    private void txtSubtotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSubtotalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSubtotalActionPerformed
+
+    private void btnMostrarServicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarServicioActionPerformed
+        ServicioControlador servicioControlador = new ServicioControlador(new ServicioDAO(ConexionBD.getConexion()));
+        List<Servicio> servicios = servicioControlador.listarServicios();
+
+        DefaultListModel<String> modelo = new DefaultListModel<>();
+        for (Servicio s : servicios) {
+            modelo.addElement(s.getId() + " - " + s.getNombre());
+        }
+        lstServicios.setModel(modelo);
+    }//GEN-LAST:event_btnMostrarServicioActionPerformed
+
+    private void txtCantidad1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantidad1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCantidad1ActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        limpiarDatos();
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+        try {
+            int idDetalle = Integer.parseInt(txtID.getText()); // ID ingresado
+            int cantidad = Integer.parseInt(txtCantidad.getText());
+            double precioUnitario = Double.parseDouble(txtPUnitario.getText());
+            double subtotal = Double.parseDouble(txtSubtotal.getText());
+            double iva = Double.parseDouble(txtIVA.getText());
+            double total = Double.parseDouble(txtTotal.getText());
+
+            // Obtener el servicio seleccionado del JList
+            String servicioSeleccionado = lstServicios.getSelectedValue();
+            int idServicio = Integer.parseInt(servicioSeleccionado.split(" - ")[0]);
+            ServicioControlador servicioControlador = new ServicioControlador(new ServicioDAO(ConexionBD.getConexion()));
+            Servicio servicio = servicioControlador.buscarServicio(idServicio);
+
+            // Crear el DetFactura actualizado
+            DetFacturaControlador detFacturaControlador = new DetFacturaControlador(new DetFacturaDAO(ConexionBD.getConexion()));
+            DetFactura detalleActualizado = new DetFactura(idDetalle, cantidad, precioUnitario, subtotal, iva, total, null, servicio);
+
+            detFacturaControlador.actualizarDetalle(detalleActualizado); // Actualizar en la BD
+            JOptionPane.showMessageDialog(this, "Detalle de factura actualizado exitosamente.");
+
+            limpiarDatos();
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Error en los valores numéricos.");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error al actualizar el detalle de factura: " + e.getMessage());
+        }
+    }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void limpiarDatos(){
+        txtID.setEditable(true);
+        txtID.setText("");
+        txtCantidad.setText("");
+        txtPUnitario.setText("");
+        txtSubtotal.setText("");
+        txtIVA.setText("");
+        txtTotal.setText("");
+        lstServicios.clearSelection();
+        btnMostrarServicio.setEnabled(false);
+    }
+    
+    private void activarBotones(){
+        btnMostrarServicio.setEnabled(true);
+        txtCantidad.setEditable(true);
+        txtPUnitario.setEditable(true);
+        txtSubtotal.setEditable(true);
+        txtIVA.setEditable(true);
+        txtTotal.setEditable(true);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnActualizar;
+    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnMostrarServicio;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel lblCantidad;
+    private javax.swing.JLabel lblCantidad1;
+    private javax.swing.JLabel lblID;
+    private javax.swing.JLabel lblIVA;
+    private javax.swing.JLabel lblPUitario;
+    private javax.swing.JLabel lblServicios;
+    private javax.swing.JLabel lblSubtotal;
+    private javax.swing.JLabel lblTotal;
+    private javax.swing.JList<String> lstServicios;
+    private javax.swing.JTextField txtCantidad;
+    private javax.swing.JTextField txtCantidad1;
+    private javax.swing.JTextField txtID;
+    private javax.swing.JTextField txtIVA;
+    private javax.swing.JTextField txtPUnitario;
+    private javax.swing.JTextField txtSubtotal;
+    private javax.swing.JTextField txtTotal;
     // End of variables declaration//GEN-END:variables
 }
